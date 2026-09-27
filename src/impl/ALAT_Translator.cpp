@@ -41,7 +41,7 @@ void ALAT_Translator::toMyAccent(const std::string& backup_filename)
     {
         translated_text.append(main_file.text_content, position, token.start - position);
 
-        // black magic i did
+        // black magic
         const auto pair = std::find_if(
             my_accent.accent_map.begin(),
             my_accent.accent_map.end(),
