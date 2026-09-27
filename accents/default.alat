@@ -1,0 +1,11 @@
+ADD = +
+SUB = -
+MULT = *
+DIV = /
+IF = if
+FOR = for
+WHILE = while
+VAR_DECL = var
+LIBRARY_IMPORT = import
+FUNC_DECL = func
+COMMENT = //

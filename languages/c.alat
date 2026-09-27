@@ -1,0 +1,9 @@
+ADD = +
+SUB = -
+MULT = *
+DIV = /
+IF = if
+FOR = for
+WHILE = while
+LIBRARY_IMPORT = #include
+COMMENT = //

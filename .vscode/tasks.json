@@ -1,0 +1,92 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "COMPILE RESOURCES",
+            "command": "D:\\SOFTWARE\\WIN64DK\\bin\\windres.exe ${workspaceFolder}\\src\\resource.rc -O coff -o ${workspaceFolder}\\src\\resource.res",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": ["/d", "/c"]
+                }
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "BUILD WITH ACCENT TRANSLATION",
+            "dependsOn": ["COMPILE RESOURCES"],
+            "command": "D:\\SOFTWARE\\WIN64DK\\bin\\g++.exe -std=c++17 -fdiagnostics-color=always -g -I${workspaceFolder}/external -I${workspaceFolder}/include ${workspaceFolder}/src/main.cpp ${workspaceFolder}/src/impl/ALAT_Accent.cpp ${workspaceFolder}/src/impl/ALAT_Config.cpp ${workspaceFolder}/src/impl/ALAT_FileReader.cpp ${workspaceFolder}/src/impl/ALAT_Language.cpp ${workspaceFolder}/src/impl/ALAT_Source.cpp ${workspaceFolder}/src/impl/ALAT_Token.cpp ${workspaceFolder}/src/impl/ALAT_Translator.cpp ${workspaceFolder}\\src\\resource.res -ladvapi32 -lshell32 -luser32 -o ${workspaceFolder}\\src\\main.exe",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [
+                        "/d",
+                        "/c"
+                    ]
+                }
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "COMPILE INSTALLER RESOURCES",
+            "dependsOn": ["BUILD WITH ACCENT TRANSLATION"],
+            "command": "D:\\SOFTWARE\\WIN64DK\\bin\\windres.exe -I${workspaceFolder} ${workspaceFolder}\\installer_resource.rc -O coff -o ${workspaceFolder}\\src\\installer.res",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": ["/d", "/c"]
+                }
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "BUILD ALAT INSTALLER",
+            "dependsOn": ["COMPILE INSTALLER RESOURCES"],
+            "command": "D:\\SOFTWARE\\WIN64DK\\bin\\g++.exe -std=c++17 -mwindows -fdiagnostics-color=always -g -I${workspaceFolder}/src ${workspaceFolder}/src/installer.cpp ${workspaceFolder}\\src\\installer.res -ladvapi32 -lshell32 -luser32 -o ${workspaceFolder}\\alat-installer.exe",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": ["/d", "/c"]
+                }
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "RUN WITH ACCENT TRANSLATION",
+            "command": "${workspaceFolder}\\src\\main.exe",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [
+                        "/d",
+                        "/c"
+                    ]
+                }
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ]
+}

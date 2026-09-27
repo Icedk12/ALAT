@@ -1,0 +1,9 @@
+#include "src/installer_resource.h"
+
+IDI_ICON1 ICON "lat.ico"
+IDR_ALAT_EXECUTABLE RCDATA "src/main.exe"
+IDR_LANGUAGE_C RCDATA "languages/c.alat"
+IDR_LANGUAGE_CPP RCDATA "languages/cpp.alat"
+IDR_LANGUAGE_GDSCRIPT RCDATA "languages/gdscript.alat"
+IDR_LANGUAGE_PYTHON RCDATA "languages/python.alat"
+IDR_DEFAULT_ACCENT RCDATA "accents/default.alat"

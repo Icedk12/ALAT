@@ -1,0 +1,4 @@
+IF = when
+LIBRARY_IMPORT = @usefile
+WHILE = loop
+MULT = x

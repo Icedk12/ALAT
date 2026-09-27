@@ -1,0 +1,10 @@
+ADD = +
+SUB = -
+MULT = *
+DIV = /
+IF = if
+FOR = for
+WHILE = while
+FUNC_DECL = def
+LIBRARY_IMPORT = import
+COMMENT = #
